@@ -1,3 +1,0 @@
-0.1.0
-- plugin manager
-- SFSE version shown in pause menu

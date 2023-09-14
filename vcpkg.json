@@ -1,0 +1,13 @@
+{
+  "name": "enemy-friendly-fire",
+  "version-string": "1.0.1",
+  "description": "",
+  "homepage": "",
+  "license": "MIT",
+  "dependencies": [
+    "boost-stl-interfaces",
+    "rsm-binary-io",
+    "spdlog",
+    "xbyak"
+  ]
+}
