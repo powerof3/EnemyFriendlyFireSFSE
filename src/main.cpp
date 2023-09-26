@@ -2,18 +2,17 @@ namespace EnemyFriendlyFire
 {
 	struct CheckValidTarget
 	{
-		static bool Thunk(RE::Actor*, RE::TESObjectREFR&)
+		static bool thunk(RE::Actor*, RE::TESObjectREFR&)
 		{
 			return true;
 		}
-		[[maybe_unused]] static inline REL::Relocation<decltype(Thunk)> func;
-
-		static inline std::size_t idx = 0x162;
+		[[maybe_unused]] static inline REL::Relocation<decltype(thunk)> func;
+		static inline std::size_t                                       idx = 0x162;
 	};
 
 	void Install()
 	{
-		stl::write_vfunc<RE::Actor, CheckValidTarget>();
+		stl::write_vfunc<RE::Actor, CheckValidTarget>(25);
 
 	    logger::info("Hooked CheckValidTarget");
 	}
@@ -21,7 +20,7 @@ namespace EnemyFriendlyFire
 
 void MessageCallback(SFSE::MessagingInterface::Message* a_msg) noexcept
 {
-    switch (a_msg->type) {
+	switch (a_msg->type) {
 	case SFSE::MessagingInterface::kPostLoad:
 		EnemyFriendlyFire::Install();
 		break;
@@ -36,11 +35,11 @@ DLLEXPORT constinit auto SFSEPlugin_Version = []() noexcept {
 	data.PluginVersion(Version::MAJOR);
 	data.PluginName(Version::PROJECT);
 	data.AuthorName("powerofthree");
-	data.UsesSigScanning(true);
-	//data.UsesAddressLibrary(true);
-	data.HasNoStructUse(true);
-	//data.IsLayoutDependent(true);
-	data.CompatibleVersions({ SFSE::RUNTIME_SF_1_7_29 });
+	data.UsesAddressLibrary(true);
+	//data.UsesSigScanning(true);
+	data.IsLayoutDependent(true);
+	//data.HasNoStructUse(true);
+	data.CompatibleVersions({ SFSE::RUNTIME_LATEST });
 
 	return data;
 }();

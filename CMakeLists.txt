@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 set(NAME "po3_EnemyFriendlyFire" CACHE STRING "")
-set(VERSION 1.0.1 CACHE STRING "")
+set(VERSION 1.0.2 CACHE STRING "")
 
 # ---- Options ----
 
